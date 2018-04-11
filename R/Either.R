@@ -2,7 +2,6 @@
 # Either ------------------------------------------------------------------
 
 Either <- setClass("Either")
-setGeneric("map", function(this, f) myNotImplemented())
 
 # Left --------------------------------------------------------------------
 
