@@ -21,7 +21,11 @@ setMethod(f = "flatMap",
 setMethod(f = "fold",
 					signature("None", "function", "function"),
 					function(this, f, g) {f()})
-
+setMethod(f = "ap",
+					signature = c("None", "function"),
+					definition = function(this, fab) {
+						None()
+					})
 # Some --------------------------------------------------------------------
 
 Some   <- setClass("Some",
@@ -36,3 +40,8 @@ setMethod(f = "flatMap",
 setMethod(f = "fold",
 					signature("Some", "function", "function"),
 					function(this, f, g) {g(this@value)})
+setMethod(f = "ap",
+					signature = c("Some"),
+					definition = function(this, fab) {
+						map(fab, function(f) f(this@value))
+					})

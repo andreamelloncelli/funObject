@@ -76,3 +76,10 @@ showMethods('map')
 
 map
 library(purrr)
+
+# funtore_applicativo -----------------------------------------------------
+fab <- Some(value = function(a) a * 2)
+fab
+map(fab, function(f) f(s@value) )
+ap(s, fab)
+p
