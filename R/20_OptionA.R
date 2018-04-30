@@ -26,11 +26,11 @@ NoneA <- function(A = "ANY") {
 	setMethod(f = "fold",
 						signature("None", "function", "function"),
 						function(this, f, g) {f()})
-	# setMethod(f = "ap",
-	# 					signature = c("None", paste("Option", "function")),
-	# 					definition = function(this, fab) {
-	# 						None()
-	# 					})
+	setMethod(f = "ap",
+						signature = c("None", subtype("Option", "function")),
+						definition = function(this, fab) {
+							None()
+						})
 	None
 }
 
@@ -38,22 +38,20 @@ NoneA <- function(A = "ANY") {
 
 SomeA <- function(A = "ANY") {
 
-	if (A == "ANY") A = ""
-
-	Some   <- setClass(paste0("Some", A),
-										 representation(value = "ANY"),
+	Some   <- setClass(subtype("Some", A),
+										 representation(value = A),
 										 contains = "Option")
 	setMethod(f = "map",
-						signature = c("Some", "function"),
+						signature = c(subtype("Some", A), "function"),
 						function(this, f) Some(value = f(this@value)) )
 	setMethod(f = "flatMap",
-						signature = c("Some", "function"),
+						signature = c(subtype("Some", A), "function"),
 						definition = function(this, f) f(this@value) )
 	setMethod(f = "fold",
-						signature("Some", "function", "function"),
+						signature(subtype("Some", A), "function", "function"),
 						function(this, f, g) {g(this@value)})
 	setMethod(f = "ap",
-						signature = c("Some", paste0("Option", "function")),
+						signature = c(subtype("Some", A), subtype("Option", "function")),
 						definition = function(this, fab) {
 							map(fab, function(f) f(this@value))
 						})
