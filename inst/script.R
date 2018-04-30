@@ -78,8 +78,19 @@ map
 library(purrr)
 
 # funtore_applicativo -----------------------------------------------------
-fab <- Some(value = function(a) a * 2)
+# init
+fab <- Some(value = function(a) a * 3)
 fab
-map(fab, function(f) f(s@value) )
+# run
+s
 ap(s, fab)
+## or
+map(fab, function(f) f(s@value) )
+
+
+###
 p
+ap(s, s) # error
+###
+
+

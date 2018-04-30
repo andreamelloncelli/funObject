@@ -1,9 +1,9 @@
 Option <- OptionA()
 None   <- NoneA()
 Some   <- SomeA()
-# Option <- OptionA(A = "function")
-# None   <- NoneA(A = "function")
-# Some   <- SomeA(A = "function")
+Optionfunction <- OptionA(A = "function")
+Nonefunction   <- NoneA(A = "function")
+Somefunction   <- SomeA(A = "function")
 # # Option ------------------------------------------------------------------
 #
 # Option <- setClass("Option")
