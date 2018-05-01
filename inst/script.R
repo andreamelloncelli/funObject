@@ -79,7 +79,7 @@ library(purrr)
 
 # funtore_applicativo -----------------------------------------------------
 # init
-fab <- Some(value = function(a) a * 3)
+fab <- Somefunction(value = function(a) a * 3)
 fab
 # run
 s

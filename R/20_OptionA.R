@@ -2,7 +2,7 @@ OptionA <- function(A = "ANY") {
 
 	# Option ------------------------------------------------------------------
 
-	Option <- setClass("Option")
+	Option <- setClass(subtype("Option", A))
 	setMethod(f = "lift",
 						signature("Option", "function"),
 						function(this, f) {function(this) map(this, f)})
@@ -40,7 +40,7 @@ SomeA <- function(A = "ANY") {
 
 	Some   <- setClass(subtype("Some", A),
 										 representation(value = A),
-										 contains = "Option")
+										 contains = subtype("Option", A))
 	setMethod(f = "map",
 						signature = c(subtype("Some", A), "function"),
 						function(this, f) Some(value = f(this@value)) )
